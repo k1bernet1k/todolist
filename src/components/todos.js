@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 export default class Todos extends Component {
     constructor(props) {
@@ -33,12 +35,20 @@ export default class Todos extends Component {
     render() {
         return(
             <div>
-                <form onSubmit = {(e) => this.addTodo(e)}>
+                <form class="row g-3"
+                    onSubmit = {(e) => this.addTodo(e)}>
+                    <div className="col-auto">
                     <input
+                        // className="form-control"
+                        className="form-control"
+
                         value={this.state.text}
                         onChange={(e) => {this.updateValue(e)}}
                     />
-                    <button type="submit">Добавить задачу</button>
+                    </div>
+                    <div className="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Добавить задачу</button>
+                    </div>
                 </form>
                 <Todolist todos={this.state.todos} removeTodo={this.removeTodo}/>
             </div>
